@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dss.javaMail.mapper.UserMapper" >
+  
+  <select id="getUser" resultType="com.dss.javaMail.entity.User">
+  	select * from user;
+  </select>
+  
+  <insert id="registerUser" parameterType="com.dss.javaMail.entity.User">
+  	insert into user values(null, #{username}, #{password}, #{nickname}, #{email}, #{state}, #{code})
+  </insert>
+  
+  <select id="getUserByCode" parameterType="com.dss.javaMail.entity.User" resultType="com.dss.javaMail.entity.User">
+  	select * from user where code = #{code}
+  </select>
+  
+  <update id="updateState" parameterType="com.dss.javaMail.entity.User">
+  	update user set state = 1 where uid = #{uid} and code = #{code}
+  </update>
+  
+</mapper>
